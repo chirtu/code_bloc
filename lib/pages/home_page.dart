@@ -43,7 +43,7 @@ int _currentIndex = 0;
               child: Container(
                 color: Colors.black.withOpacity(.9),
                 child:  Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +57,8 @@ int _currentIndex = 0;
                         ],
                       ),
                       SizedBox(height: 30,),
-                      Text("Some Sweets of", style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 31, color: colors.white),),
+                      Text("Some sweets of", style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 31, color: colors.white),),
+                      SizedBox(height: 20,),
                       Text("Happiness!", style: GoogleFonts.lato(fontWeight: FontWeight.normal, fontSize: 21, color: colors.white),),
                       SizedBox(height: 20,),
                       Row(
