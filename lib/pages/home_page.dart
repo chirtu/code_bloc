@@ -178,7 +178,7 @@ int _currentIndex = 0;
               label: ''
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.cancel_rounded,color: colors.grey,),
+            icon: Icon(Icons.cancel_outlined,color: colors.grey,),
               label: '',
           ),
           BottomNavigationBarItem(
