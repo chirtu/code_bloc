@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:code_bloc/themes/colors.dart';
 import 'package:code_bloc/widgets/home_card.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,35 +16,81 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-bool isTapped = false;
-int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black12.withOpacity(.2),
+      backgroundColor: Colors.black12.withOpacity(.3),
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                  height: 150,
-                  width: 150,
-                decoration: BoxDecoration(
-                  color: colors.yellow,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(60),
-                    bottomRight: Radius.circular(60),
-                    topRight: Radius.circular(60),
-                  )
-                ),
-                  ),
+            Container(
+              height: size.height,
+              width:size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // GlowingOverscrollIndicator(
+                  //   axisDirection: AxisDirection.down,
+                  //   color: Colors.yellow.shade500,
+                  //   child:
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(60),
+                                bottomRight: Radius.circular(60),
+                                topRight: Radius.circular(60),
+                              ),
+                        color: Colors.yellow.shade700.withOpacity(.6),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.yellow.shade500.withOpacity(.6),
+                            spreadRadius: 8,
+                            blurRadius: 20,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
+                      ),
+                      width: 200,
+                      height: 170,
+                    ),
+
+                  // ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                        alignment: Alignment.bottomRight,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(60),
+                            bottomRight: Radius.circular(60),
+                            topRight: Radius.circular(60),
+                          ),
+                          color: Colors.yellow.withOpacity(.9),
+                          boxShadow: [
+                            // BoxShadow(
+                            //   color: Colors.yellow,
+                            //   spreadRadius: 8,
+                            //   blurRadius: 20,
+                            //   offset: Offset(0, 0),
+                            // ),
+                          ],
+                        ),
+                        width: 150,
+                        height: 150,
+                      ),
+                    ),
+                ],
+              ),
             ),
             BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10), // Adjust blur values as needed
-              child: Container(
-                color: Colors.black.withOpacity(.9),
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                blendMode: BlendMode.srcOver,
+              child:  BlurryContainer(
+                // blur:8 ,
+                color:Colors.black12.withOpacity(.78),
                 child:  Padding(
                   padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 20),
                   child: Column(
@@ -52,27 +101,27 @@ int _currentIndex = 0;
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          IconButton(icon:Icon(Icons.menu, color: Colors.white) ,onPressed: null,),
+                          IconButton(icon:Icon(Icons.density_large_outlined, color: Colors.white) ,onPressed: null,),
                           IconButton(  onPressed:null, icon: Icon(CupertinoIcons.search, color: Colors.white,),)
                         ],
                       ),
                       SizedBox(height: 30,),
-                      Text("Some sweets of", style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 31, color: colors.white),),
+                      Text("Some sweets of", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 31, color: colors.white),),
                       SizedBox(height: 20,),
-                      Text("Happiness!", style: GoogleFonts.lato(fontWeight: FontWeight.normal, fontSize: 21, color: colors.white),),
+                      Text("Happiness!", style: GoogleFonts.openSans(fontWeight: FontWeight.normal, fontSize: 21, color: colors.white),),
                       SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
                             child: Container(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                               decoration: BoxDecoration(
                                 // color:  isTapped? colors.yellow: colors.white,
-                                  color:  colors.yellow,
+                                  color:  Colors.yellow.shade600,
                                   borderRadius: BorderRadius.circular(8)
                               ),
-                              child: Text("Donuts", style: GoogleFonts.lato(fontWeight: FontWeight.normal, fontSize: 12,
+                              child: Text("Donuts", style: GoogleFonts.openSans(fontWeight: FontWeight.normal, fontSize: 12,
                                   color: colors.black),),
                             ),
                             onTap: null,
@@ -85,7 +134,7 @@ int _currentIndex = 0;
                                   color:  colors.transparent,
                                   borderRadius: BorderRadius.circular(8)
                               ),
-                              child: Text("Ice Cream", style: GoogleFonts.lato(fontWeight: FontWeight.normal, fontSize: 14,
+                              child: Text("Ice Cream", style: GoogleFonts.openSans(fontWeight: FontWeight.normal, fontSize: 14,
                                 color:
                                 // isActive? colors.black?  // applited when there a real navigation
                                 colors.grey
@@ -102,7 +151,7 @@ int _currentIndex = 0;
                                   color:  colors.transparent,
                                   borderRadius: BorderRadius.circular(8)
                               ),
-                              child: Text("Bombolini", style: GoogleFonts.lato(fontWeight: FontWeight.normal, fontSize: 14,
+                              child: Text("Bombolini", style: GoogleFonts.openSans(fontWeight: FontWeight.normal, fontSize: 14,
                                   color:
                                   // isActive? colors.black?  // applited when there a real navigation
                                   colors.grey
@@ -128,12 +177,12 @@ int _currentIndex = 0;
                               image: 'assets/images/donut.jpeg',
                               title: 'Unicorn Sprinkles',
                               price: "7,800",
-                              subtitle: 'Strawberry Cream',),
+                              subtitle: 'Strawberry Cream with Strawberry Cream',),
                             HomeCard(
                               image: 'assets/images/donut.jpeg',
                               title: 'Dark Sprinkles',
                               price: "6,800",
-                              subtitle: 'Chocolate with ..',),
+                              subtitle: 'Chocolate with spring ',),
                             HomeCard(
                               image: 'assets/images/donut.jpeg',
                               title: 'Choco Avocado',
@@ -143,12 +192,12 @@ int _currentIndex = 0;
                               image: 'assets/images/donut.jpeg',
                               title: 'Vannila Splash',
                               price: "8,800",
-                              subtitle: 'Vannila Cream with Vannila Splash',),
+                              subtitle: 'Vannila Cream  with Vannila Cream ',),
                             HomeCard(
                               image: 'assets/images/donut.jpeg',
                               title: 'Vannila Splash',
                               price: "8,800",
-                              subtitle: 'Vannila Cream with ..',),
+                              subtitle: 'Vannila Creamy with Vannila Creamy',),
                             HomeCard(
                               image: 'assets/images/donut.jpeg',
                               title: 'Vannila Splash',
@@ -164,64 +213,21 @@ int _currentIndex = 0;
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:  CurvedNavigationBar(
+        height:50 ,
+        color: Colors.black12,
         backgroundColor: Colors.white12,
-        type: BottomNavigationBarType.fixed ,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.timer,color: colors.grey,),
-              label: ''
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.cancel_outlined,color: colors.grey,),
-              label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 80,
-              child: Container(
-                width: 56,
-                alignment: Alignment.topCenter,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: 70,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: colors.yellow,
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          color: colors.black,
-                        ),
-                      ),
-                    ),
-                SizedBox(height: 40)
-                  ],
-                ),
-              ),
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border_sharp, color: colors.grey,),
-            label: ''
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.cart, color: colors.grey,),
-              backgroundColor: colors.yellow,
-              label: ''
-          ),
+        items: <Widget>[
+          Icon  ( CupertinoIcons.timer,color: colors.grey,),
+          Icon  (Icons.cancel_outlined, color: colors.grey,) ,
+          Icon  (Icons.add),
+          Icon  (Icons.favorite_border_outlined, color: colors.grey,),
+          Icon  ( CupertinoIcons.cart, color: colors.grey,),
         ],
+        buttonBackgroundColor: Colors.yellow.shade600,
+        onTap: (index) {
+        },
       ),
-
     );
   }
 }

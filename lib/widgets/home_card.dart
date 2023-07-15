@@ -38,20 +38,20 @@ class HomeCard extends StatelessWidget {
             SizedBox(height: 10,),
             Text(
               title,
+              maxLines: 1,overflow: TextOverflow.ellipsis,
               style: GoogleFonts.lato(
                 color: colors.white,
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Expanded(
-              child: Text(
-                subtitle,
-                style: GoogleFonts.lato(
-                  color: colors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                ),
+            Text(
+              subtitle,
+              maxLines: 1,overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.lato(
+                color: colors.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
               ),
             ),
             Row(

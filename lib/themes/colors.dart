@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   final Color grey = Colors.grey;
-  final Color yellow = Colors.yellow.shade700;
+  final Color yellow = Colors.yellow.shade600;
   final Color transparent = Colors.transparent;
   final Color primary = Color(0xff004AAD);
   final white = Colors.white;
