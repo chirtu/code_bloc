@@ -10,7 +10,8 @@ class HomeCard extends StatelessWidget {
   final String image;
   final String subtitle;
   final String price;
-  const HomeCard({required this.image, required this.title, required this.subtitle, required this.price});
+  final Widget page;
+  const HomeCard({required this.image, required this.title, required this.subtitle, required this.price, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -18,30 +19,29 @@ class HomeCard extends StatelessWidget {
     return InkWell(
       child:  Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.white12,
+          color:Colors.white10,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 10,),
+            // SizedBox(height: 10,),
             Center(
               child: Container(
-                height: 90,
-                width: 90,
+                // height: 100,
+                // width: 10,
                 child:Image.asset(image),
               ),
             ),
-            SizedBox(height: 10,),
             Text(
               title,
               maxLines: 1,overflow: TextOverflow.ellipsis,
               style: GoogleFonts.lato(
                 color: colors.white,
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -50,7 +50,7 @@ class HomeCard extends StatelessWidget {
               maxLines: 1,overflow: TextOverflow.ellipsis,
               style: GoogleFonts.lato(
                 color: colors.grey,
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.normal,
               ),
             ),
@@ -60,7 +60,7 @@ class HomeCard extends StatelessWidget {
               children: [
                 Text(price,
                     style: GoogleFonts.lato(
-                      color: colors.white,
+                      color: colors.grey,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     )
@@ -72,7 +72,7 @@ class HomeCard extends StatelessWidget {
         ),
       ),
       onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
     );
   }

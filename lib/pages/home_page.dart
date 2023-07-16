@@ -1,12 +1,13 @@
 import 'dart:ui';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:code_bloc/pages/add_to_cart_page.dart';
 import 'package:code_bloc/themes/colors.dart';
 import 'package:code_bloc/widgets/home_card.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black12.withOpacity(.3),
+      backgroundColor: Colors.white12,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -32,56 +33,59 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // GlowingOverscrollIndicator(
-                  //   axisDirection: AxisDirection.down,
-                  //   color: Colors.yellow.shade500,
-                  //   child:
-                    Container(
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 10,
+                      height: 10,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(60),
-                                bottomRight: Radius.circular(60),
-                                topRight: Radius.circular(60),
-                              ),
-                        color: Colors.yellow.shade700.withOpacity(.6),
+                        shape: BoxShape.circle,
+                        color: Colors.yellow,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.yellow.shade500.withOpacity(.6),
-                            spreadRadius: 8,
-                            blurRadius: 20,
+                            color: Colors.yellow.withOpacity(0.5),
+                            spreadRadius: 200,
+                            blurRadius: 200,
                             offset: Offset(0, 0),
                           ),
                         ],
                       ),
-                      width: 200,
-                      height: 170,
-                    ),
-
-                  // ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                        alignment: Alignment.bottomRight,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(60),
-                            bottomRight: Radius.circular(60),
-                            topRight: Radius.circular(60),
-                          ),
-                          color: Colors.yellow.withOpacity(.9),
-                          boxShadow: [
-                            // BoxShadow(
-                            //   color: Colors.yellow,
-                            //   spreadRadius: 8,
-                            //   blurRadius: 20,
-                            //   offset: Offset(0, 0),
-                            // ),
-                          ],
-                        ),
-                        width: 150,
-                        height: 150,
+                      child: Icon(
+                        Icons.radio_button_checked_outlined,
+                        color: Colors.yellow,
+                        size: 20,
                       ),
                     ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child:  Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.yellow,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.yellow.withOpacity(0.5),
+                              spreadRadius: 100,
+                              blurRadius: 100,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                        child: Icon(
+                          Icons.radio_button_checked_outlined,
+                          color: Colors.yellow,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -89,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 blendMode: BlendMode.srcOver,
               child:  BlurryContainer(
-                // blur:8 ,
+                blur:8 ,
                 color:Colors.black12.withOpacity(.78),
                 child:  Padding(
                   padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 20),
@@ -107,9 +111,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(height: 30,),
                       Text("Some sweets of", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 31, color: colors.white),),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 10,),
                       Text("Happiness!", style: GoogleFonts.openSans(fontWeight: FontWeight.normal, fontSize: 21, color: colors.white),),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -169,40 +173,52 @@ class _HomePageState extends State<HomePage> {
                           primary: false,
                           padding: const EdgeInsets.all(0),
                           crossAxisSpacing: 27,
-                          mainAxisSpacing: 27,
+                          mainAxisSpacing: 30,
                           crossAxisCount: 2,
                           childAspectRatio: .75,
                           children: <Widget>[
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Unicorn Sprinkles',
                               price: "7,800",
-                              subtitle: 'Strawberry Cream with Strawberry Cream',),
+                              subtitle: 'Strawberry Cream with Strawberry Cream',
+                              page: AddToCartPage(),
+                            ),
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Dark Sprinkles',
                               price: "6,800",
-                              subtitle: 'Chocolate with spring ',),
+                              subtitle: 'Chocolate with spring ',
+                              page: AddToCartPage(),
+                            ),
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Choco Avocado',
                               price: "8,800",
-                              subtitle: 'Avocado Cream',),
+                              subtitle: 'Avocado Cream',
+                              page: AddToCartPage(),
+                            ),
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Vannila Splash',
                               price: "8,800",
-                              subtitle: 'Vannila Cream  with Vannila Cream ',),
+                              subtitle: 'Vannila Cream  with Vannila Cream ',
+                              page: AddToCartPage(),
+                            ),
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Vannila Splash',
                               price: "8,800",
-                              subtitle: 'Vannila Creamy with Vannila Creamy',),
+                              subtitle: 'Vannila Creamy with Vannila Creamy',
+                              page: AddToCartPage(),
+                            ),
                             HomeCard(
-                              image: 'assets/images/donut.jpeg',
+                              image: 'assets/images/donut.png',
                               title: 'Vannila Splash',
                               price: "8,800",
-                              subtitle: 'Vannila Cream with Vannila Splash',),
+                              subtitle: 'Vannila Cream with Vannila Splash',
+                              page: AddToCartPage(),
+                            ),
                           ]
                       ),
                     ],
