@@ -84,10 +84,28 @@ class _AddToCartPageState extends State<AddToCartPage> {
           BackdropFilter(
             filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
             child: Container(
+              padding: EdgeInsets.symmetric(vertical: 40),
               color: Colors.black12.withOpacity(.4),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(onPressed: (){
+                        Navigator.pop(context);
+                      }, icon: Icon(CupertinoIcons.back, color: Colors.grey,))
+                    ],
+                  ),
+                  Image(image: AssetImage("assets/images/donut.png")),
+                  SizedBox(height: 10,),
+
+                ],
+              )
             ),
           ),
-
         ],
       ),
     );
