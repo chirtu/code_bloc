@@ -1,16 +1,2 @@
-# code_bloc
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Some SWEET UI
+<img width="438" alt="Screenshot 2023-11-13 at 12 21 37" src="https://github.com/chirtu/code_bloc/assets/77027012/173acb46-7634-4a09-865f-85afcf924120">
